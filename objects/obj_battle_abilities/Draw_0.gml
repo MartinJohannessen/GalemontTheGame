@@ -1,0 +1,1 @@
+if attacking = 1 draw_self();

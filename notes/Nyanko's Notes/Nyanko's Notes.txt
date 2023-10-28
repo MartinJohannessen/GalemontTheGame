@@ -1,0 +1,280 @@
+Welcome to Nyanko's Manual. Below you'll find guidance on how to navigate,
+add to, and work on this project.
+
+Some things to note, triple aterick *** Marks a new category. 
+Code snippet examples and between these: *---------*
+
+Some code snippets might be psuedo code, meaning it won't directly work
+but enough is there to get the point across of what to do.
+
+If you want to cycle through the categories, do control + F and search ***
+to find the start to each category. Enjoy ~
+
+
+*** NPC's ***
+
+In scr_generator the game places an NPC into the room near the bottom of the script.
+Currently, it only put's in par_npc. This is the parent object for our NPC's.
+
+To add more, we would create a new object, like "obj_npc_01" for example, and assign
+par_npc as the parent. This will allow our new object to copy 100% of the code from
+par_npc and act exactly the same.
+
+To make the script choose an NPC other than "par_npc" we could add a chance factor.
+We would write that like this:
+
+*-------------------------------------------*
+var chance = irandom_range(0, 2);
+switch chance
+	{
+	case 0:
+		instance_create_layer obj_npc_01;
+		break;
+	case 1:
+		instance_create_layer obj_npc_02;
+		break;
+	case 2:
+		instance_create_layer obj_npc_03;
+		break;
+	}
+*-------------------------------------------*
+
+The way this works, is you set chance to a random number, and based on which number
+is randomly chosen, defines which NPC will be spawned into the game. You can make the
+range bigger or small based on how many NPC's exist that you want chosen from.
+
+If you wanted to have certain NPC's per biome, then you would check the biome before
+running the chance factor. For example:
+
+*-------------------------------------------*
+if tileset = ts_space
+	{
+	var chance = choose(0, 1, 2);
+	if choose = 0
+		{
+		instance_create_layer obj_spacenpc_01;
+		}
+	if choose = 1
+		{
+		instance_create_layer obj_spacenpc_02;
+		}
+	if choose = 2
+		{
+		instance_create_layer obj_spacenpc_03;
+		}
+	}
+*-------------------------------------------*
+
+You would do this for each biome. Now here I used "Choose" and "if" statement instead of
+"irandom_range" and "switch" statements. They work exactly the same, it's purely on preference.
+
+
+
+*** Messages and Dialogue ***
+
+100% of our dialogue is in scr_dialogue. Our NPC objects are all EXACTLY the same except for ONE thing.
+Their sprite. Every NPC has identical code, but their sprites are different. This is why in our dialogue
+script we ask what the sprite of the calling object is, and then define the dialogue used from that.
+
+This is how the code will look for an NPC that only has 1 dialogue option.
+
+*-------------------------------------------*
+if argument0 = spr_npc01
+	{
+	msgs = 1; //Make this equal the number of messages! In this case, there's only 1 messages. So we set it to 1.
+	dialogue[1] = "I'm lost.. I sure wish someone would let me join their party o.o"; //Type your dialogue here 
+	draw_text_ext(dx, dy, dialogue[msg], 10, 124); //This is what draws the dialogue to the screen
+	}
+	
+if argument0 = spr_npc_02
+	{
+	msgs = 3;
+	dialogue[1] = "Hello! This is my first message.";
+	dialogue[2] = "And this is my second message, how are ya!";
+	dialogue[3] = "This is my last message, after this the textbox will disappear.";
+	draw_text_ext(dx, dy, dialogue[msg], 10, 112);
+	}
+*-------------------------------------------*
+
+If you wanted to have progressional dialogue, it would look more like this:
+
+*-------------------------------------------*
+if argument0 = spr_npc01
+	{
+	if character[npc01] = 0 //This is my message the first time you meet me 
+		{
+		msgs = 1; 
+		dialogue[1] = "I'm lost.. I sure wish someone would let me join their party o.o";
+		draw_text_ext(dx, dy, dialogue[msg], 10, 124);
+		if msg = msgs character[npc01]++; //This bumps up the character variable to 1
+		}
+		
+	if character[npc01] = 1 //This is my message the second time you meet me
+		{
+		msgs = 1; 
+		dialogue[1] = "I'm lost.. I sure wish someone would let me join their party o.o";
+		draw_text_ext(dx, dy, dialogue[msg], 10, 124);
+		}
+	}
+*-------------------------------------------*
+
+For simple progressthe draw event of obj_sign01 for examples on how to progress the dialogue, or do other things.
+
+
+*** Warp and Doors ***
+
+The way our warps and doors work is pretty simple.
+Just put a door object down in the room, double click it, go into it's creation code, and
+assign where this door should take you. For example, if you wanna go to an inn room:
+
+*------------------------*
+///obj_door creation code
+rm = rm_inn;
+tarx = 48;
+tary = 48;
+*------------------------*
+
+The "rm" variable is which room we'll be going to.
+"tarx" = short for target x, this is the starting X coordinate we'll start at in the new room.
+"tary" = short for target y, this is the starting Y coordinate we'll start at in the new room.
+
+If you're still confused, find a door object in any room and double click it to check it's creation code.
+Every door should have different rooms/coordinates unless two doors go to the exact same room and same coordinates.
+
+
+
+*** Party Members with Stats ***
+
+An index of every possible party member is available in the obj_globals create event.
+Here, we list every detail about every party member, from their name as a string, their sprite,
+all of their stats, and so on and so forth.
+
+To add more, simple copy and paste the previous one, and fill in your pasted version with the
+date for the new possible party member you're adding into the game.
+
+
+
+*** Enemies with Stats ***
+
+For adding enemies with stats, we'll have to do the same exact thing as above with party members!
+The only difference, is it will be a seperate array to make things more organized, for example:
+
+*-------------------------------------*
+var i = 1;
+
+globalvar enemydex;
+enemydex[i, 0] = spr_goblin; //Sprite
+enemydex[i, 1] = 40; //Health
+enemydex[i, 2] = 10; //Stamina
+enemydex[i, 3] = 4; //Strength
+enemydex[i, 4] = 1; //Defense
+enemydex[i, 5] = 5; //Spirit
+enemydex[i, 6] = 1; //Speed
+enemydex[i, 7] = -1; //Charisma
+enemydex[i, 8] = "Fire 1";     //Spell 1
+enemydex[i, 9] = "Recovery 1"; //Spell 2
+i++
+*-------------------------------------*
+
+You can see, that it's nearly identical for the index for our party members. Only, the array name is
+"enemydex", instead of "index", and the sprite is an enemy's sprite than than an NPC or other party member.
+
+
+
+*** Spells and incantations for those with a talent to case~ ***
+
+Spells. For spells, we will need a script that has every spell in the game.
+When someone uses a spell, we will send the spell name through the script, let's say it's
+called "scr_spells". You would say
+
+*-------------------*
+scr_spells("Fire_1");
+*-------------------*
+
+OR, since we have an index of our monsters and allies that stores which spells they have, we'd say:
+
+*-------------------*
+scr_spells(enemydex[1, 8]);
+*-------------------*
+
+If we go to the enemy index, and check this entry in the array, it should say "Fire_1".
+Therefore, it's basically the same, except the bottom text snippet will change based on which monster
+or ally is casting a spell, and which spell they have in that slot. However, there's one issue here!
+
+enemydex[1, 8]
+
+The one, since it is a "1", and not a variable, it will use the same monster/allies spell every single
+time! That's why we have "party". Party stores a number which relates to a monster/ally.
+
+So instead we would right:
+
+*------------------------------------*
+scr_spells(enemydex[party[btlr], 8]);
+*------------------------------------*
+
+Here, btlr is which party member we're using. If we only have 1 battler, it can only be the first one.
+But if we have a team of 4, then btlr (battler) can be any number from 1-4 (or 0-3).
+
+So let's say our btlr number is 2, and party[2] = 3.
+If we go to index[3, 0] we'll find the sprite for the party member. Just like if we go to
+index[3, 8] we'll find the first spell from this same party member :D
+
+So writing "scr_spells(index[party[btlr], 8]);" and "scr_spells(index[3, 8]);" is virtually the same.
+The only difference is, btlr will change based on which party member we're using. We can't change "3"
+since it isn't a variable.
+
+This can be pretty confusing at first, but you can see lot's of example of me using this if you go to
+the draw event of obj_battle. Take this code snippet for example:
+
+*--------------------------------*
+spd = index[party[btlr], ind.spd];
+*--------------------------------*
+
+Here, we are setting "spd" to the speed of the current battler in our parties speed.
+You can also see "ind.spd". This is an enumerator. It just sets a name to a number.
+
+Basically, in the index, number 6 is the speed stat, which you can see here:
+enemydex[i, 6] = 1; //Speed
+
+Instead of remembering that 6 is the speed stat (and all the other ones too), instead, you just
+write "ind.spd". Because ind.spd is equal to 6, and it's much easier write that. There's enumerators for
+every stat, you can see what those are called here:
+
+*-----------*
+enum ind
+	{
+	sprite,  //0 = Sprite
+	maxhp,   //1 = Max Health
+	stam,    //2 = Stamina
+	str,     //3 = Strength
+	def,     //4 = Defense
+	sprt,    //5 = Sprite
+	spd,     //6 = Speed
+	chrs,    //7 = Charisma
+	spll1,   //8 = Spell one
+	spll2    //9 = Spell two
+	}
+*-----------*
+
+Now compare that, to this, and see that they match up!
+
+*----------------------------------------*
+enemydex[i, 0] = spr_goblin; //Sprite
+enemydex[i, 1] = 40; //Health
+enemydex[i, 2] = 10; //Stamina
+enemydex[i, 3] = 4; //Strength
+enemydex[i, 4] = 1; //Defense
+enemydex[i, 5] = 5; //Spirit
+enemydex[i, 6] = 1; //Speed
+enemydex[i, 7] = -1; //Charisma
+enemydex[i, 8] = "Fire 1";     //Spell 1
+enemydex[i, 9] = "Recovery 1"; //Spell 2
+*----------------------------------------*
+
+Enumerators are special though. They're not like variables, because you can't change them, but you can use
+them anywhere in the entire project. Almost like a "global variable". But you can only set them once, and
+if you ever want to change their values you have to go to where they're sat and re-order them.
+
+This enumerator is also set in the creation code of obj_globals, along with a few other enumerators!
+
+Friendly cosmonaught has a great youtube tutorial on these if you're interested in learning more about them :)

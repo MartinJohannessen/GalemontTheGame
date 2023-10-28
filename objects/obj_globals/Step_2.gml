@@ -1,0 +1,1 @@
+pal_swap_reset();

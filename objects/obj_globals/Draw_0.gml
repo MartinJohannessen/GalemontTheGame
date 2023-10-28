@@ -1,0 +1,1 @@
+pal_swap_set(spr_index, palette, false);

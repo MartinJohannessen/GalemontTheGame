@@ -1,0 +1,8 @@
+ver 0.9
+
+Elevator Chain sound plays after room transition 
+
+On contact with Elevator, player is prompted with a text box "Descened?" 
+
+Answer in the affirmative: "..!"
+Answer in the negative: "..."

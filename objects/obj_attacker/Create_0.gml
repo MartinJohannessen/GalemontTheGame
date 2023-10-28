@@ -1,0 +1,1 @@
+attacker = sprite_index;
