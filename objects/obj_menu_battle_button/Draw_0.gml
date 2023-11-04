@@ -1,4 +1,4 @@
-draw_self();
+//draw_self();
 
 draw_set_font(fn_galemont24);
 draw_set_halign(fa_center);

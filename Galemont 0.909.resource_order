@@ -1,7 +1,7 @@
 {
   "FolderOrderSettings": [
-    {"name":"Menu","order":15,"path":"folders/Objects/Menu.yy",},
     {"name":"Battle","order":16,"path":"folders/Objects/Battle.yy",},
+    {"name":"Menu","order":15,"path":"folders/Objects/Menu.yy",},
   ],
   "ResourceOrderSettings": [
     {"name":"spr_player_walk_u","order":1,"path":"sprites/spr_player_walk_u/spr_player_walk_u.yy",},

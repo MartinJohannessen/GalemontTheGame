@@ -16,7 +16,9 @@
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Fonts","folderPath":"folders/Fonts.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Notes","folderPath":"folders/Notes.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Objects","folderPath":"folders/Objects.yy",},
+    {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Battle","folderPath":"folders/Objects/Battle.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Characters","folderPath":"folders/Objects/Characters.yy",},
+    {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Menu","folderPath":"folders/Objects/Menu.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"World","folderPath":"folders/Objects/World.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Paths","folderPath":"folders/Paths.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Rooms","folderPath":"folders/Rooms.yy",},
@@ -66,8 +68,6 @@
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Tile Sets","folderPath":"folders/Tile Sets.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Dungeons","folderPath":"folders/Tile Sets/Dungeons.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Timelines","folderPath":"folders/Timelines.yy",},
-    {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Menu","folderPath":"folders/Objects/Menu.yy",},
-    {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Battle","folderPath":"folders/Objects/Battle.yy",},
   ],
   "IncludedFiles": [
     {"resourceType":"GMIncludedFile","resourceVersion":"1.0","name":"settings.json","CopyToMask":-1,"filePath":"datafiles",},
