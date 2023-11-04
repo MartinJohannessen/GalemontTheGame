@@ -1,3 +1,3 @@
 rm = rm_test;
-tarx = 32;
-tary = 48;
+tarx = 86;
+tary = 134;

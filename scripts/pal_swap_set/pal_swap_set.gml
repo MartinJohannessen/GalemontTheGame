@@ -62,7 +62,4 @@ function pal_swap_set(argument0, argument1, argument2) {
 	    shader_set_uniform_f(Pal_UVs[mode], texel_hx, texel_hy, 1.0+texel_hx, 1.0+texel_hy);
 	    shader_set_uniform_f(Pal_Index[mode], _pal_index);
 	}
-
-
-
 }

@@ -12,8 +12,8 @@
   "managed": true,
   "overriddenProperties": [],
   "parent": {
-    "name": "Under the Hood",
-    "path": "folders/Objects/Under the Hood.yy",
+    "name": "Menu",
+    "path": "folders/Objects/Menu.yy",
   },
   "parentObjectId": null,
   "persistent": false,

@@ -9,8 +9,8 @@
   "managed": true,
   "overriddenProperties": [],
   "parent": {
-    "name": "Under the Hood",
-    "path": "folders/Objects/Under the Hood.yy",
+    "name": "Battle",
+    "path": "folders/Objects/Battle.yy",
   },
   "parentObjectId": null,
   "persistent": false,

@@ -8,8 +8,8 @@
   "managed": true,
   "overriddenProperties": [],
   "parent": {
-    "name": "Interactable",
-    "path": "folders/Objects/Interactable.yy",
+    "name": "World",
+    "path": "folders/Objects/World.yy",
   },
   "parentObjectId": null,
   "persistent": false,

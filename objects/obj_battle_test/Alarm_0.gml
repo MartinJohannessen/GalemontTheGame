@@ -1,7 +1,7 @@
 
 for (i = 0; i < 3; i++;)
 	{
-	with instance_nearest(48 + (i*48), 220, obj_vamguard)
+	with instance_nearest(48 + (i*48), 220, obj_vanguard)
 		{
 		bench[other.i] = id;
 		}

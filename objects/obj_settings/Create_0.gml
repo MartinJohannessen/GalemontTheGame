@@ -34,9 +34,10 @@ pages = array_create(SETTINGS_PAGE.size);
 //main page
 pages[SETTINGS_PAGE.main] = [
 	[SETTINGS_TYPE.title, "- SETTINGS -"],
+	[SETTINGS_TYPE.event, "Start New Game", undefined, 0],
 	[SETTINGS_TYPE.page, "Options", undefined, SETTINGS_PAGE.options, 1],
 	[SETTINGS_TYPE.page, "Controls", undefined, SETTINGS_PAGE.controls, 1],
-	[SETTINGS_TYPE.event, "Save and exit", undefined, 0],
+	
 ];
 
 //options page
